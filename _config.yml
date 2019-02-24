@@ -113,7 +113,7 @@ author:
   email            : "maxmin93@gmail.com"
   links:
     - label: "Linkedin"
-      icon: "fas fa-fw fa-linkedin"
+      icon: "fas fa-fw fa-linkedin-square"
       url: "https://www.linkedin.com/in/maxmin93/"
     - label: "Website"
       icon: "fas fa-fw fa-link"
