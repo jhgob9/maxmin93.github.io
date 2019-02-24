@@ -11,15 +11,15 @@
 # https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
 
 # theme                  : "minimal-mistakes-jekyll"
-remote_theme             : "mmistakes/minimal-mistakes"
+remote_theme             : "mmistakes/minimal-mistakes@4.15.2"
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "ko-KR"
-title                    : "Tonyne on JEJU"
+title                    : "maxmin93's TIL blog"
 title_separator          : "-"
 name                     : "Min Byeong-Guk"
-description              : "My TIL (since 2019-03)"
+description              : "Tonyne on JEJU (since 2019-03)"
 url                      : "https://maxmin93.github.io"
 baseurl                  : ""
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -106,30 +106,27 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : "Min Byeong-Guk"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an amazing person."
-  location         : "Somewhere"
-  email            :
+  bio              : "Graph data engineer, Full-stack Developer"
+  location         : "Jeju-do, Korea"
+  email            : "maxmin93@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: mailto:your.name@email.com
+      url: mailto:maxmin93@gmail.com
     - label: "Website"
       icon: "fas fa-fw fa-link"
-      # url: "https://your-website.com"
+      url: "https://tonyne.jeju.onl"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
-      # url: "https://twitter.com/"
+      url: "https://twitter.com/maxmin93"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
-      # url: "https://facebook.com/"
+      url: "https://facebook.com/maxmin93"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      # url: "https://github.com/"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
+      url: "https://github.com/maxmin93"
 
 # Site Footer
 footer:
