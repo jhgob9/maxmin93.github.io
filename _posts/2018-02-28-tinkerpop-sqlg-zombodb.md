@@ -1,4 +1,4 @@
-{% highlight groovy %}
+```Groovy
 gremlin-console bin/gremlin.sh
 
          \,,,/
@@ -33,9 +33,9 @@ gremlin> g.E().hasLabel('followedBy').properties().key().groupCount()
 gremlin> g.E().hasLabel('followedBy').limit(1).properties()
 ==>p[weight->1]
 gremlin> :quit
-{% endhighlight %}
+```
 
-{% highlight sql %}
+```SQL
 set search_path=public;
 
 VACUUM FULL "E_followedBy";		-- exec by only single transaction
@@ -66,9 +66,9 @@ ID		name		songType		performances
 "183"	"DONT NEED LOVE"	"original"	16
 "189"	"EASY TO LOVE YOU"	"original"	45
 */
-{% endhighlight %}
+```
 
-{% highlight groovy %}
+```Groovy
 gremlin> newV = graph.addVertex(label,'song')
 ==>v[public.song:::585]
 gremlin> newV.property('name','SQLG TEST SONG01')
@@ -105,11 +105,11 @@ gremlin> g.V().hasLabel('song').has('songType','test').limit(1).properties()
 ==>vp[name->SQLG TEST SONG01]
 ==>vp[songType->test]
 ==>vp[performances->99]
-{% endhighlight %}
+```
 
-{% highlight sql %}
+```SQL
 select * from "V_song" where "V_song" ==> 'test';
 -- no result (without tx.commit)
 -- after tx.commit, then OK!!
 -- ==> "586"	"SQLG TEST SONG01"	"test"	99
-{% endhighlight %}
+```
