@@ -6,7 +6,7 @@ categories: Agensbrowser recommendation cf-filtering northwind
 
 # Script
 
-[northwind_tutorial0_video.sql][tutorial_script]
+[northwind_tutorial0_video.sql][tutorial-script]
 
 # Video
 
@@ -14,7 +14,7 @@ categories: Agensbrowser recommendation cf-filtering northwind
 
 # Google presentation
 
-[AgensBrowser tutorial][ab_northwind_ppt]
+[AgensBrowser tutorial][ab-northwind-ppt]
 
-[tutorial_script] : https://github.com/bitnine-oss/ab-restapi-samples/blob/master/northwind/northwind_tutorial0_video.sql
-[ab_northwind_ppt] : https://docs.google.com/presentation/d/1ziyWDaL8s9TvfFYQ3abAMEBXcjVja76vd2C9vN-d0zo/edit?usp=sharing
+[tutorial-script] : https://github.com/bitnine-oss/ab-restapi-samples/blob/master/northwind/northwind_tutorial0_video.sql
+[ab-northwind-ppt] : https://docs.google.com/presentation/d/1ziyWDaL8s9TvfFYQ3abAMEBXcjVja76vd2C9vN-d0zo/edit?usp=sharing
