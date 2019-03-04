@@ -7,9 +7,11 @@ categories: Tinkerpop sqlg postgresql zombodb
 ## Test
 
 - Tinkerpop 3.3.4 & sqlg plugin
+- Postgresql JDBC 연결 설정 ==> conf/sqlg.properties
+-- jdbc.url, jdbc.username, jdbc.password
 
 ```groovy
-gremlin-console bin/gremlin.sh
+$ gremlin-console bin/gremlin.sh
 
          \,,,/
          (o o)
@@ -48,29 +50,40 @@ gremlin> :quit
 ## Test 
 
 - postgresql & zombodb extension (elasticsearch)
+- elasticsearch ==> http://localhost:9200/
+
+```diff
+- NOTE 1: sqlg 에 의한 schema 생성 후, 생성된 테이블에 대해 vaccum full <table_name> 처리 해야 indexing 가능 
+- NOTE 2: vaccum 수행을 하려면 graph.close 해야 가능 (table lock 해제)
+```
 
 ```sql
 set search_path=public;
 
-VACUUM FULL "E_followedBy";		-- exec by only single transaction
+VACUUM FULL "E_followedBy"; -- exec by only single transaction
 create index idx_e_followedby
-on "E_followedBy" using zombodb(("E_followedBy".*)) with (url='http://localhost:9200/');
+  on "E_followedBy" using zombodb(("E_followedBy".*)) 
+  with (url='http://localhost:9200/');
 
-VACUUM FULL "E_sungBy";			-- exec by only single transaction
+VACUUM FULL "E_sungBy";	 -- exec by only single transaction
 create index idx_e_sungby
-on "E_sungBy" using zombodb(("E_sungBy".*)) with (url='http://localhost:9200/');
+  on "E_sungBy" using zombodb(("E_sungBy".*)) 
+  with (url='http://localhost:9200/');
 
-VACUUM FULL "E_writtenBy";		-- exec by only single transaction
+VACUUM FULL "E_writtenBy";	 -- exec by only single transaction
 create index idx_e_writtenby
-on "E_writtenBy" using zombodb(("E_writtenBy".*)) with (url='http://localhost:9200/');
+  on "E_writtenBy" using zombodb(("E_writtenBy".*)) 
+  with (url='http://localhost:9200/');
 
-VACUUM FULL "V_song";			-- exec by only single transaction
+VACUUM FULL "V_song";	 -- exec by only single transaction
 create index idx_v_song
-on "V_song" using zombodb(("V_song".*)) with (url='http://localhost:9200/');
+  on "V_song" using zombodb(("V_song".*)) 
+  with (url='http://localhost:9200/');
 
-VACUUM FULL "V_artist";			-- exec by only single transaction
+VACUUM FULL "V_artist";	 -- exec by only single transaction
 create index idx_v_artist
-on "V_artist" using zombodb(("V_artist".*)) with (url='http://localhost:9200/');
+  on "V_artist" using zombodb(("V_artist".*)) 
+  with (url='http://localhost:9200/');
 
 select * from "V_song" where "V_song" ==> 'love AND original';
 /*
@@ -84,7 +97,11 @@ ID		name		songType		performances
 
 ## Test : insert new vertex
 
-- sqlg trasaction have to need commit
+- sqlg 로 연결한 postgresql 에 트랜잭션을 반영하기 위해서는 반드시 tx.commit 해야 함
+
+```diff
+- NOTE : sqlg trasaction have to need commit
+```
 
 ```groovy
 gremlin> newV = graph.addVertex(label,'song')
@@ -107,7 +124,7 @@ gremlin> g.V().hasLabel('song').has('songType','test').limit(1).properties()
 ==>vp[performances->99]
 
 ###############################
-gremlin> graph.tx().commit()
+gremlin> graph.tx().commit()        # <== important!!
 ==>null
 gremlin> g.close()
 ==>null
@@ -128,6 +145,7 @@ gremlin> g.V().hasLabel('song').has('songType','test').limit(1).properties()
 ## Test
 
 - After tx commit, elasticsearch can do indexing changed-data
+- 변경 사항이 즉시 반영된다 ==> very good!!
 
 ```sql
 select * from "V_song" where "V_song" ==> 'test';
