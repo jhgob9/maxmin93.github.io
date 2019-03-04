@@ -1,3 +1,13 @@
+---
+title: "Tinkerpop & sqlg, postgresql & zombodb"
+date: 2019-02-24 20:12:00 -0400
+categories: Tinkerpop sqlg postgresql zombodb
+---
+
+## Test
+
+- Tinkerpop 3.3.4 & sqlg plugin
+
 ```Groovy
 gremlin-console bin/gremlin.sh
 
@@ -35,6 +45,10 @@ gremlin> g.E().hasLabel('followedBy').limit(1).properties()
 gremlin> :quit
 ```
 
+## Test 
+
+- postgresql & zombodb extension (elasticsearch)
+
 ```SQL
 set search_path=public;
 
@@ -67,6 +81,10 @@ ID		name		songType		performances
 "189"	"EASY TO LOVE YOU"	"original"	45
 */
 ```
+
+## Test : insert new vertex
+
+- sqlg trasaction have to need commit
 
 ```Groovy
 gremlin> newV = graph.addVertex(label,'song')
@@ -106,6 +124,10 @@ gremlin> g.V().hasLabel('song').has('songType','test').limit(1).properties()
 ==>vp[songType->test]
 ==>vp[performances->99]
 ```
+
+## Test
+
+- After tx commit, elasticsearch can do indexing changed-data
 
 ```SQL
 select * from "V_song" where "V_song" ==> 'test';
