@@ -20,4 +20,4 @@ categories: Agensbrowser recommendation cf-filtering northwind
 
 ### Google presentation
 
-[AgensBrowser tutorial](https://docs.google.com/presentation/d/1ziyWDaL8s9TvfFYQ3abAMEBXcjVja76vd2C9vN-d0zo/edit?usp=sharing)
+[AgensBrowser tutorial](https://docs.google.com/presentation/d/15c1jqXSKH36sXD1b5DZSs4kqUEIKR-5KzcefTU2kYtA/edit?usp=sharing)
