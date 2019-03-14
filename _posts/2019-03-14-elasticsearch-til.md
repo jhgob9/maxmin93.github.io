@@ -12,7 +12,7 @@ categories: es til
 
 ## 2장 엘라스틱서치 따라하기
 
-```
+```json
 PUT /catalog/product/1
 {
   "sku": "SP0001",
@@ -108,7 +108,7 @@ GET /catalog/_mapping/my_type
 
 ## 3장 유사도 검색
 
-```
+```json
 PUT test_analyzer
 {
   "settings": {
@@ -214,7 +214,7 @@ POST _analyze
 
 ## 별첨 : *_nori analyzer_* 테스트
 
-```
+```json
 DELETE nori_sample
 PUT nori_sample
 {
@@ -259,3 +259,24 @@ GET nori_sample/_analyze
 }
 
 ```
+
+#### [update-settings-analysis](https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-update-settings.html#update-settings-analysis)
+
+```json
+POST /twitter/_close
+
+PUT /twitter/_settings
+{
+  "analysis" : {
+    "analyzer":{
+      "content":{
+        "type":"custom",
+        "tokenizer":"whitespace"
+      }
+    }
+  }
+}
+
+POST /twitter/_open
+```
+
